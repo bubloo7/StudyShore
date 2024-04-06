@@ -3,7 +3,9 @@ from flask_cors import CORS
 import os
 from docx import Document
 from pypdf import PdfReader
-import win32com.client
+from pptx import Presentation
+
+
 
 
 
@@ -26,8 +28,7 @@ def handle_pdf(pdf):
         text = page.extract_text()
         s += text
     
-    print(s)
-    # pass in s to gemini
+    print(s) # pass in s to gemini
 
 def handle_txt(txt):
     pass
@@ -40,8 +41,7 @@ def handle_docx(docx):
             s += line.text
         s += '\n'
     
-    print(s)
-    # pass in s to gemini
+    print(s) # pass in s to gemini
 
 def handle_mp3(mp3):
     pass
@@ -50,17 +50,21 @@ def handle_mp4(mp4):
     pass
 
 def handle_pptx(pptx):
-    powerpoint = win32com.client.DispatchEx("Powerpoint.Application")
-    powerpoint.Visible = 1
-    deck = powerpoint.Presentations.Open('file.pptx')
-    deck.SaveAs("file.pdf", 32)
-    deck.Close()
-    powerpoint.Quit()
-
-
-
-
-    pass
+    p = Presentation('file.pptx')
+    s = ''
+    # sorry about the try/except stuff. its annoying bc certain things dont have texts/shapes and make it crash
+    for slide in p.slides:
+        try: 
+            for shape in slide.shapes:
+                try:
+                    s += shape.text
+                except Exception:
+                    pass
+            s += '\n'
+        except Exception:
+            pass
+    
+    print(s) # pass in s to gemini
 
 @app.route('/')
 def hello_world():
