@@ -22,3 +22,6 @@ Thumbs.db
 
 # Cache
 .cache/
+
+/backend/file*
+/backend/database/*.json

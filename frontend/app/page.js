@@ -24,7 +24,9 @@ export default function Home() {
                         method: "POST",
                         body: formData,
                     });
-                    console.log("response:", await response.json());
+                    const response_json = await response.json();
+                    console.log("response:", response_json.data);
+                    window.location.href = "/" + response_json.id;
                 }}
             />
         </div>
