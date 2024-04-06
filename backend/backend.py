@@ -31,6 +31,8 @@ def handle_pdf(pdf):
     print(s) # pass in s to gemini
 
 def handle_txt(txt):
+    s = open('file.txt').read()
+    print(s) # pass in s to gemini
     pass
 
 def handle_docx(docx):
