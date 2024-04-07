@@ -1,8 +1,9 @@
 import { Col, Row, Space, Flex } from "antd";
 import { FolderUp, BookCopy, BookOpenCheck } from "lucide-react";
-
+import { toast, ToastContainer } from "react-toastify";
 import CustomTypewriter from "@/components/CustomTypewriter";
 import UploadButton from "@/components/UploadButton";
+import "react-toastify/dist/ReactToastify.css";
 
 const api_server = "http://localhost:5000/";
 
@@ -21,22 +22,9 @@ const Home = () => {
                     marginBottom: "120px",
                 }}
             >
-
-                <Col
-                    xs={24}
-                    sm={20}
-                    md={20}
-                    lg={20}
-                    xl={20}
-                    xxl={20}
-                    justify="center"
-                    align="middle"
-                >
+                <Col xs={24} sm={20} md={20} lg={20} xl={20} xxl={20} justify="center" align="middle">
                     <h1 style={{ textAlign: "center", marginTop: "100px" }}>
-                        AI{" "}
-                        <span style={{ color: "var(--main-blue)" }}>
-                            learning
-                        </span>
+                        AI <span style={{ color: "var(--main-blue)" }}>learning</span>
                     </h1>
                     <h1
                         style={{
@@ -57,18 +45,8 @@ const Home = () => {
                     <UploadButton />
 
                     <h2 style={{ marginTop: "120px" }}>Instructions</h2>
-                    <Flex
-                        justify="center"
-                        align="space-between"
-                        style={{ marginTop: "40px" }}
-                        gap="large"
-                    >
-                        <Col
-                            justify="center"
-                            align="middle"
-                            span={6}
-                            style={{ marginRight: "20px" }}
-                        >
+                    <Flex justify="center" align="space-between" style={{ marginTop: "40px" }} gap="large">
+                        <Col justify="center" align="middle" span={6} style={{ marginRight: "20px" }}>
                             <FolderUp size={30} color="#3b82f6" />
                             <h3 style={{ marginTop: "10px" }}>Upload File</h3>
                             <p
@@ -78,8 +56,8 @@ const Home = () => {
                                     marginTop: "15px",
                                 }}
                             >
-                                Upload a video (MP4) or a PDF document of your
-                                lecture slides, personal notes, lecture notes
+                                Upload a video (MP4) or a PDF document of your lecture slides, personal notes, lecture
+                                notes
                             </p>
                         </Col>
                         <Col
@@ -92,9 +70,7 @@ const Home = () => {
                             }}
                         >
                             <BookCopy size={30} color="#3b82f6" />
-                            <h3 style={{ marginTop: "10px" }}>
-                                Customized Study Tools
-                            </h3>
+                            <h3 style={{ marginTop: "10px" }}>Customized Study Tools</h3>
                             <p
                                 style={{
                                     marginRight: "10px",
@@ -102,21 +78,13 @@ const Home = () => {
                                     marginTop: "15px",
                                 }}
                             >
-                                Our AI Tool will use your uploaded files to
-                                create a personalized summary, flashcards, and
-                                quiz
+                                Our AI Tool will use your uploaded files to create a personalized summary, flashcards,
+                                and quiz
                             </p>
                         </Col>
-                        <Col
-                            justify="center"
-                            align="middle"
-                            span={6}
-                            style={{ marginLeft: "20px" }}
-                        >
+                        <Col justify="center" align="middle" span={6} style={{ marginLeft: "20px" }}>
                             <BookOpenCheck size={30} color="#3b82f6" />
-                            <h3 style={{ marginTop: "10px" }}>
-                                Export and Learn
-                            </h3>
+                            <h3 style={{ marginTop: "10px" }}>Export and Learn</h3>
                             <p
                                 style={{
                                     marginRight: "10px",
@@ -124,13 +92,14 @@ const Home = () => {
                                     marginTop: "15px",
                                 }}
                             >
-                                Study using the material and share it with
-                                peers. Instead, also make it publicly avaliable.
+                                Study using the material and share it with peers. Instead, also make it publicly
+                                avaliable.
                             </p>
                         </Col>
                     </Flex>
                 </Col>
             </Row>
+            <ToastContainer position="bottom-right" />
         </>
     );
 };
