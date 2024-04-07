@@ -10,6 +10,7 @@ export default function FlashCards(props) {
         const handleKeyPress = (event) => {
             event.preventDefault();
             console.log(event.key);
+            event.preventDefault();
             if (event.key === "ArrowLeft") {
                 setCurrentCard((prev) => {
                     if (prev === 0) {

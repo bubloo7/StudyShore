@@ -7,11 +7,12 @@ from pptx import Presentation
 import random
 import string
 import json
+import sys
 
 from quiz_generator import export_quiz
 from flash_card_generator import export_flashcards
 from summary_generator import export_summary
-
+from gemini_call import prompt_everyting
 
 app = Flask(__name__)
 CORS(app)
@@ -127,14 +128,6 @@ Sodales neque sodales ut etiam sit amet nisl. Fames ac turpis egestas maecenas p
     return {"id": id}
 
 
-def handle_png(png):
-    pass
-
-
-def handle_jpeg(jpeg):
-    pass
-
-
 def handle_pdf(pdf):
     reader = PdfReader(os.getcwd() + "/file.pdf")
     number_of_pages = len(reader.pages)
@@ -144,13 +137,13 @@ def handle_pdf(pdf):
         text = page.extract_text()
         s += text
 
-    print(s)  # pass in s to gemini
+    return s
 
 
 def handle_txt(txt):
     s = open("file.txt").read()
-    print(s)  # pass in s to gemini
-    pass
+    print(s, "save me god")
+    return s
 
 
 def handle_docx(docx):
@@ -161,7 +154,7 @@ def handle_docx(docx):
             s += line.text
         s += "\n"
 
-    print(s)  # pass in s to gemini
+    return s
 
 
 def handle_mp3(mp3):
@@ -187,7 +180,7 @@ def handle_pptx(pptx):
         except Exception:
             pass
 
-    print(s)  # pass in s to gemini
+    return s
 
 
 @app.route("/")
@@ -197,30 +190,39 @@ def hello_world():
 
 @app.route("/upload", methods=["POST"])
 def upload():
+    print("in /upload")
     file = request.files["file"]
     name = file.filename
     extension = name.split(".")[-1]
     file.save(dst=os.getcwd() + "/file." + extension)
+    file.close()
 
-    print(extension, name)
-    if extension == "png":
-        handle_png(file)
-    elif extension == "jpg":
-        handle_jpeg(file)
-    elif extension == "pdf":
-        handle_pdf(file)
+    if extension == "pdf":
+        s = handle_pdf(file)
     elif extension == "txt":
-        handle_txt(file)
+        s = handle_txt(file)
     elif extension == "docx":
-        handle_docx(file)
+        s = handle_docx(file)
     elif extension == "mp3":
-        handle_mp4(file)
+        s = handle_mp4(file)
     elif extension == "mp4":
-        handle_mp3(file)
+        s = handle_mp3(file)
     elif extension == "pptx":
-        handle_pptx(file)
+        s = handle_pptx(file)
 
-    response = example_response()
+    # print("parsed s:", s)
+    response = prompt_everyting(s)
+    # print("finished prompting")
+    # print(response)
+
+    quiz2 = generate_quiz(response["flash_cards"])
+    response["quiz"] += quiz2
+
+    id = generate_id()
+    response["id"] = id
+    with open(os.getcwd() + "/database/" + id + ".json", "w") as f:
+        json.dump(response, f)
+
     return response
 
 
