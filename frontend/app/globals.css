@@ -1,8 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 
 :root {
     --main-blue: #3b82f6;
@@ -10,12 +6,12 @@
     --main-white: #ffffff;
 }
 
-
 h1 {
     font-size: 64px;
     font-weight: 700;
     color: var(--main-dark);
     text-align: "center";
+    font-family: "Inter";
 }
 
 h2 {
@@ -23,6 +19,8 @@ h2 {
     font-weight: 600;
     color: var(--main-dark);
     text-align: "center";
+    font-family: "Inter";
+
 }
 
 h3 {
@@ -30,6 +28,8 @@ h3 {
     font-weight: 700;
     color: var(--main-dark);
     text-align: "center";
+    font-family: "Inter";
+
 }
 
 p {
@@ -37,6 +37,7 @@ p {
     font-weight: 400;
     color: var(--main-dark);
     text-align: "center";
+    font-family: "Inter";
 
 }
 
@@ -52,6 +53,8 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: "Inter";
+
 }
 
 .button-default:hover {
@@ -60,3 +63,6 @@ p {
     border: 1px solid #1f52c1;
 }
 
+.inter-font {
+    font-family: "Inter";
+}
