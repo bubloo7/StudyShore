@@ -90,12 +90,15 @@ export default function FlashCards(props) {
                                 display: "flex",
                                 justifyContent: "center",
                                 alignItems: "center",
+                                transition: "all 0.5s ease",
+                                transform: side ? "rotateX(180deg)" : "rotateX(0deg)",
                             }}
                             onClick={() => setSide((prev) => prev ^ 1)}
                         >
                             <h2
                                 style={{
                                     color: "var(--main-blue)",
+                                    transform: side ? "rotateX(180deg)" : "rotateX(0deg)",
                                 }}
                             >
                                 {props.data[currentCard][side]}
