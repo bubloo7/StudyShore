@@ -12,12 +12,14 @@ export default function Footer() {
                     height: "120px",
                     width: "100%",
                 }}
+                className="footer"
             >
                 <Col>
                     <h3
                         style={{
                             fontSize: "28px",
                             color: "var(--main-white)",
+                            cursor: "pointer",
                         }}
                     >
                         StudyShore.
@@ -52,25 +54,28 @@ export default function Footer() {
                     >
                         Company
                     </h3>
-                    <Row justify="space-between" align="middle" style={{marginTop: "12px"}}>
-                        <Link href="/about" passHref>
+                    <Row
+                        justify="space-between"
+                        align="middle"
+                        style={{ marginTop: "12px" }}
+                        gap={4}
+                    >
+                        <Link
+                            href="https://devpost.com/software/studyshore"
+                            passHref
+                            legacyBehavior={false}
+                            target="_blank"
+                        >
                             <p
                                 style={{
                                     color: "var(--main-white)",
+                                    textDecoration: "none",
                                 }}
                             >
-                                About
+                                DevPost
                             </p>
                         </Link>
-                        <Link href="/" passHref>
-                            <p
-                                style={{
-                                    color: "var(--main-white)",
-                                }}
-                            >
-                                Video
-                            </p>
-                        </Link>
+                        
                     </Row>
                 </Col>
             </Row>

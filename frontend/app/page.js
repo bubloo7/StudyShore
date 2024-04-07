@@ -18,7 +18,7 @@ const Home = () => {
                 justify="center"
                 align="middle"
                 style={{
-                    marginTop: "24px",
+                    marginTop: "34px",
                     marginBottom: "120px",
                 }}
             >
@@ -58,13 +58,13 @@ const Home = () => {
                             fontSize: "22px",
                         }}
                     >
-                        Upload <b>MP4/MP3/PDF/DOCX/TXT/HTML/MD</b> File
+                        Upload <b>MP4/MP3/PDF/DOCX/TXT/HTML/MD/PPTX</b> File
                     </p>
                     <UploadButton />
                     <Flex
                         justify="center"
                         align="space-between"
-                        style={{ marginTop: "80px" }}
+                        style={{ marginTop: "80px", marginBottom: "80px"}}
                         gap="large"
                     >
                         <Col
