@@ -18,7 +18,7 @@ const Home = () => {
                 justify="center"
                 align="middle"
                 style={{
-                    marginTop: "84px",
+                    marginTop: "24px",
                     marginBottom: "120px",
                 }}
             >
@@ -39,13 +39,11 @@ const Home = () => {
                         <CustomTypewriter />
                     </h3>
 
-                    <h3 style={{ marginTop: "100px", marginBottom: "20px" }}>
-                        Upload MP4, PDF, or Hand-Written to Get Started
+                    <h3 style={{ marginTop: "40px", marginBottom: "20px" }}>
+                        Upload MP4/MP3/PDF/DOCX/TXT/HTML/MD
                     </h3>
                     <UploadButton />
-
-                    <h2 style={{ marginTop: "120px" }}>Instructions</h2>
-                    <Flex justify="center" align="space-between" style={{ marginTop: "40px" }} gap="large">
+                    <Flex justify="center" align="space-between" style={{ marginTop: "60px" }} gap="large">
                         <Col justify="center" align="middle" span={6} style={{ marginRight: "20px" }}>
                             <FolderUp size={30} color="#3b82f6" />
                             <h3 style={{ marginTop: "10px" }}>Upload File</h3>
@@ -56,8 +54,7 @@ const Home = () => {
                                     marginTop: "15px",
                                 }}
                             >
-                                Upload a video (MP4) or a PDF document of your lecture slides, personal notes, lecture
-                                notes
+                                Upload a video, audio, pdf, word document, or text file to get started!
                             </p>
                         </Col>
                         <Col
@@ -78,13 +75,13 @@ const Home = () => {
                                     marginTop: "15px",
                                 }}
                             >
-                                Our AI Tool will use your uploaded files to create a personalized summary, flashcards,
+                                Our AI Tool will create a personalized summary, flashcards,
                                 and quiz
                             </p>
                         </Col>
                         <Col justify="center" align="middle" span={6} style={{ marginLeft: "20px" }}>
                             <BookOpenCheck size={30} color="#3b82f6" />
-                            <h3 style={{ marginTop: "10px" }}>Export and Learn</h3>
+                            <h3 style={{ marginTop: "10px" }}>Share the Knowledge</h3>
                             <p
                                 style={{
                                     marginRight: "10px",
@@ -92,8 +89,7 @@ const Home = () => {
                                     marginTop: "15px",
                                 }}
                             >
-                                Study using the material and share it with peers. Instead, also make it publicly
-                                avaliable.
+                                Share the study guide by sharing the link, or exporting it to a Word document!
                             </p>
                         </Col>
                     </Flex>
