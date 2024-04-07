@@ -18,6 +18,7 @@ export default function Footer() {
                         style={{
                             fontSize: "28px",
                             color: "var(--main-white)",
+                            cursor: "pointer",
                         }}
                     >
                         StudyShore.
@@ -52,7 +53,11 @@ export default function Footer() {
                     >
                         Company
                     </h3>
-                    <Row justify="space-between" align="middle" style={{marginTop: "12px"}}>
+                    <Row
+                        justify="space-between"
+                        align="middle"
+                        style={{ marginTop: "12px" }}
+                    >
                         <Link href="/about" passHref>
                             <p
                                 style={{

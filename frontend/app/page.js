@@ -18,7 +18,7 @@ const Home = () => {
                 justify="center"
                 align="middle"
                 style={{
-                    marginTop: "24px",
+                    marginTop: "34px",
                     marginBottom: "120px",
                 }}
             >
@@ -64,7 +64,7 @@ const Home = () => {
                     <Flex
                         justify="center"
                         align="space-between"
-                        style={{ marginTop: "80px" }}
+                        style={{ marginTop: "80px", marginBottom: "80px"}}
                         gap="large"
                     >
                         <Col
