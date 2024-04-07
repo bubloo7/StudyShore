@@ -58,7 +58,7 @@ const Home = () => {
                             fontSize: "22px",
                         }}
                     >
-                        Upload <b>MP4/MP3/PDF/DOCX/TXT/HTML/MD</b> File
+                        Upload <b>MP4/MP3/PDF/DOCX/TXT/HTML/MD/PPTX</b> File
                     </p>
                     <UploadButton />
                     <Flex

@@ -43,7 +43,7 @@ export default function Summary({ data }) {
 
             strong {
                 font-weight: bold;
-                font-size: 36px;
+                font-size: 26px;
                 color: var(--main-dark);
                 margin-bottom: 20px;
             }
