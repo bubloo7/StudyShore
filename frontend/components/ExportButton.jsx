@@ -23,7 +23,7 @@ const ExportButton = ({ data, selected }) => {
                 window.URL.revokeObjectURL(url);
             }}
             className="button-default"
-            style={{marginTop: "20px"}}
+            style={{marginTop: "20px", marginBottom: "20px"}}
         >
             Export {selected == 0 ? "Summary" : selected == 1 ? "Flashcards" : "Quiz"}
 

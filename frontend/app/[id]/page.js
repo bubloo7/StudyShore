@@ -50,15 +50,30 @@ export default function Page() {
                         marginBottom: "120px",
                     }}
                 >
-                    <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24} justify="center" align="middle">
-                        
+                    <Col
+                        xs={24}
+                        sm={24}
+                        md={24}
+                        lg={24}
+                        xl={24}
+                        xxl={24}
+                        justify="center"
+                        align="middle"
+                    >
                         <h2>{data.title}</h2>
 
-                        <ExportButton data={data} selected={selected} />
-
-                        <Row justify="center" align="middle" style={{ marginTop: "60px", marginBottom: "60px" }}>
-                            <Selector selected={selected} setSelected={setSelected} />
+                        <Row
+                            justify="center"
+                            align="middle"
+                            style={{ marginTop: "60px", marginBottom: "60px" }}
+                        >
+                            <Selector
+                                selected={selected}
+                                setSelected={setSelected}
+                            />
                         </Row>
+
+                        <ExportButton data={data} selected={selected} />
 
                         {selected == 0 ? (
                             <Summary data={data["summary"]} />
