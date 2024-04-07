@@ -22,9 +22,21 @@ const Home = () => {
                     marginBottom: "120px",
                 }}
             >
-                <Col xs={24} sm={20} md={20} lg={20} xl={20} xxl={20} justify="center" align="middle">
+                <Col
+                    xs={24}
+                    sm={20}
+                    md={20}
+                    lg={20}
+                    xl={20}
+                    xxl={20}
+                    justify="center"
+                    align="middle"
+                >
                     <h1 style={{ textAlign: "center", marginTop: "100px" }}>
-                        AI <span style={{ color: "var(--main-blue)" }}>learning</span>
+                        AI{" "}
+                        <span style={{ color: "var(--main-blue)" }}>
+                            learning
+                        </span>
                     </h1>
                     <h1
                         style={{
@@ -39,12 +51,28 @@ const Home = () => {
                         <CustomTypewriter />
                     </h3>
 
-                    <h3 style={{ marginTop: "40px", marginBottom: "20px" }}>
-                        Upload MP4/MP3/PDF/DOCX/TXT/HTML/MD
-                    </h3>
+                    <p
+                        style={{
+                            marginTop: "60px",
+                            marginBottom: "20px",
+                            fontSize: "22px",
+                        }}
+                    >
+                        Upload <b>MP4/MP3/PDF/DOCX/TXT/HTML/MD</b> File
+                    </p>
                     <UploadButton />
-                    <Flex justify="center" align="space-between" style={{ marginTop: "60px" }} gap="large">
-                        <Col justify="center" align="middle" span={6} style={{ marginRight: "20px" }}>
+                    <Flex
+                        justify="center"
+                        align="space-between"
+                        style={{ marginTop: "80px" }}
+                        gap="large"
+                    >
+                        <Col
+                            justify="center"
+                            align="middle"
+                            span={6}
+                            style={{ marginRight: "20px" }}
+                        >
                             <FolderUp size={30} color="#3b82f6" />
                             <h3 style={{ marginTop: "10px" }}>Upload File</h3>
                             <p
@@ -54,7 +82,8 @@ const Home = () => {
                                     marginTop: "15px",
                                 }}
                             >
-                                Upload a video, audio, pdf, word document, or text file to get started!
+                                Upload a video, audio, pdf, word document, or
+                                text file to get started!
                             </p>
                         </Col>
                         <Col
@@ -67,7 +96,9 @@ const Home = () => {
                             }}
                         >
                             <BookCopy size={30} color="#3b82f6" />
-                            <h3 style={{ marginTop: "10px" }}>Customized Study Tools</h3>
+                            <h3 style={{ marginTop: "10px" }}>
+                                Customized Study Tools
+                            </h3>
                             <p
                                 style={{
                                     marginRight: "10px",
@@ -75,13 +106,20 @@ const Home = () => {
                                     marginTop: "15px",
                                 }}
                             >
-                                Our AI Tool will create a personalized summary, flashcards,
-                                and quiz
+                                Our AI Tool will create a personalized summary,
+                                flashcards, and quiz
                             </p>
                         </Col>
-                        <Col justify="center" align="middle" span={6} style={{ marginLeft: "20px" }}>
+                        <Col
+                            justify="center"
+                            align="middle"
+                            span={6}
+                            style={{ marginLeft: "20px" }}
+                        >
                             <BookOpenCheck size={30} color="#3b82f6" />
-                            <h3 style={{ marginTop: "10px" }}>Share the Knowledge</h3>
+                            <h3 style={{ marginTop: "10px" }}>
+                                Share the Knowledge
+                            </h3>
                             <p
                                 style={{
                                     marginRight: "10px",
@@ -89,7 +127,8 @@ const Home = () => {
                                     marginTop: "15px",
                                 }}
                             >
-                                Share the study guide by sharing the link, or exporting it to a Word document!
+                                Share the study guide by sharing the link, or
+                                exporting it to a Word document!
                             </p>
                         </Col>
                     </Flex>

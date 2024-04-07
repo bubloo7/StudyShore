@@ -3,6 +3,9 @@ import remarkGfm from "remark-gfm";
 import { Col, Row } from "antd";
 
 export default function Summary({ data }) {
+
+    const newData = data.replace("** ", "** /n")
+
     return (
         <Row justify="center" align="middle">
             <Col
@@ -52,7 +55,7 @@ export default function Summary({ data }) {
             }
             `}</style>
                 <ReactMarkdown
-                    children={data}
+                    children={newData}
                     remarkPlugins={[remarkGfm]}
                     components={{
                         h2: ({ node, ...props }) => (
