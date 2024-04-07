@@ -9,6 +9,8 @@ import string
 import json
 import sys
 
+
+from moviepy.editor import VideoFileClip
 from quiz_generator import export_quiz
 from flash_card_generator import export_flashcards
 from summary_generator import export_summary
@@ -158,11 +160,18 @@ def handle_docx(docx):
 
 
 def handle_mp3(mp3):
+    # TODO: the mp3 file that was uploaded should be saved as file.mp3. Convert the mp3 to string/transcript, then return the string/transcript. That is all
     pass
 
 
 def handle_mp4(mp4):
-    pass
+    # TODO Converts the mp4 file to mp3 and returns what that returns. I think it should work but it is worth testing
+    video = VideoFileClip("file.mp4")
+    audio = video.audio
+    audio.write_audiofile("file.mp3")
+    audio.close()
+    video.close()
+    return handle_mp3()
 
 
 def handle_pptx(pptx):
@@ -217,6 +226,8 @@ def upload():
 
     quiz2 = generate_quiz(response["flash_cards"])
     response["quiz"] += quiz2
+
+    random.shuffle(response["quiz"])
 
     id = generate_id()
     response["id"] = id
