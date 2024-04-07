@@ -23,7 +23,7 @@ const Selector = (props) => {
                             style={{
                                 color:
                                     props.selected == 0
-                                        ? "var(--main-white)"
+                                        ? "var(--main-dark)"
                                         : "var(--main-blue)",
                             }}
                         >
@@ -51,7 +51,7 @@ const Selector = (props) => {
                             style={{
                                 color:
                                     props.selected == 1
-                                        ? "var(--main-white)"
+                                        ? "var(--main-dark)"
                                         : "var(--main-blue)",
                             }}
                         >
@@ -79,7 +79,7 @@ const Selector = (props) => {
                             style={{
                                 color:
                                     props.selected == 2
-                                        ? "var(--main-white)"
+                                        ? "var(--main-dark)"
                                         : "var(--main-blue)",
                             }}
                         >

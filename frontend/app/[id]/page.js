@@ -71,36 +71,29 @@ export default function Page() {
                         </h1>
                         <h3 style={{ marginTop: "20px" }}>{data.title}</h3>
 
-                        <ExportButton data={data} selected={selected}/>
+                        <ExportButton data={data} selected={selected} />
 
                         <Row
                             justify="center"
                             align="middle"
-                            style={{ marginTop: "60px" }}
+                            style={{ marginTop: "60px", marginBottom: "60px" }}
                         >
                             <Selector
                                 selected={selected}
                                 setSelected={setSelected}
                             />
                         </Row>
+
+                        {selected == 0 ? (
+                            <Summary data={data["summary"]} />
+                        ) : selected == 1 ? (
+                            <FlashCards data={data["flash_cards"]} />
+                        ) : (
+                            <Quiz data={data["quiz"]} />
+                        )}
                     </Col>
                 </Row>
             </>
         );
     }
 }
-
-/*
-<div>
-    <div style={{ margin: "100px" }}>
-        <Selector selected={selected} setSelected={setSelected} />
-    </div>
-    {selected == 0 ? (
-        <Summary data={data["summary"]} />
-    ) : selected == 1 ? (
-        <FlashCards data={data["flash_cards"]} />
-    ) : (
-        <Quiz data={data["quiz"]} />
-    )}
-</div>;
-*/
