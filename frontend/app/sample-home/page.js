@@ -107,7 +107,7 @@ const Home = () => {
                             }}
                         >
                             Study using the material and share it with peers.
-                            Instead, make it public to
+                            Instead, also make it publicly avaliable.
                         </p>
                     </Col>
                 </Flex>
