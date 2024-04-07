@@ -7,6 +7,7 @@ import Summary from "../../components/Summary";
 import FlashCards from "../../components/FlashCards";
 import Quiz from "../../components/Quiz";
 import { Row, Col } from "antd";
+import ExportButton from "@/components/ExportButton";
 
 const api_server = "http://localhost:5000/";
 
@@ -69,6 +70,8 @@ export default function Page() {
                             </span>
                         </h1>
                         <h3 style={{ marginTop: "20px" }}>{data.title}</h3>
+
+                        <ExportButton data={data} selected={selected}/>
 
                         <Row
                             justify="center"
