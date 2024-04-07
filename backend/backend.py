@@ -15,6 +15,7 @@ from quiz_generator import export_quiz
 from flash_card_generator import export_flashcards
 from summary_generator import export_summary
 from gemini_call import prompt_everyting
+from speech_to_text import get_audio
 
 app = Flask(__name__)
 CORS(app)
@@ -161,7 +162,9 @@ def handle_docx(docx):
 
 def handle_mp3(mp3):
     # TODO: the mp3 file that was uploaded should be saved as file.mp3. Convert the mp3 to string/transcript, then return the string/transcript. That is all
-    pass
+    s = get_audio("file.mp3")
+    print("handle mp3 string", s)
+    return s
 
 
 def handle_mp4(mp4):
@@ -171,7 +174,7 @@ def handle_mp4(mp4):
     audio.write_audiofile("file.mp3")
     audio.close()
     video.close()
-    return handle_mp3()
+    return handle_mp3("file.mp3")
 
 
 def handle_pptx(pptx):
@@ -213,9 +216,9 @@ def upload():
     elif extension == "docx":
         s = handle_docx(file)
     elif extension == "mp3":
-        s = handle_mp4(file)
-    elif extension == "mp4":
         s = handle_mp3(file)
+    elif extension == "mp4":
+        s = handle_mp4(file)
     elif extension == "pptx":
         s = handle_pptx(file)
 
