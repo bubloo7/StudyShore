@@ -8,8 +8,8 @@ client_file = 'sa_speech.json'
 credentials = service_account.Credentials.from_service_account_file(client_file)
 client = speech.SpeechClient(credentials = credentials)
 
-audio_len = MP3("react.mp3").info.length
-audio_file = 'react.mp3'
+audio_file = 'topology.mp3'
+audio_len = MP3(audio_file).info.length
 if audio_len <= 60:
     with io.open(audio_file, 'rb') as f:
         content = f.read()
@@ -48,3 +48,4 @@ else:
     response = operation.result(timeout = audio_len)
     for result in response.results:
         print(result.alternatives[0].transcript)
+

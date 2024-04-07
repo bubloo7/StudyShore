@@ -183,12 +183,14 @@ def upload():
 @app.route('/fetch_id', methods=['POST'])
 def fetch_id():
     id = request.json.get('id')
-    with open(os.getcwd() + "/database/" + id + ".json", "r") as f:
-        data = json.load(f)
+    try:
+        with open(os.getcwd() + "/database/" + id + ".json", "r") as f:
+            data = json.load(f)
 
-    print(data)
-    return data
- 
+        print(data)
+        return data
+    except:
+        return {"summary": 404}
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
