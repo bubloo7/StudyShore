@@ -70,6 +70,9 @@ const Home = () => {
                         style={{ marginTop: "20px" }}
                         type="null"
                     >
+                        <label for="file-upload" class="custom-file-upload">
+                            Upload File
+                        </label>
                         <Input
                             id="picture"
                             type="file"
