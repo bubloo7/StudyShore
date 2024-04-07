@@ -25,3 +25,5 @@ Thumbs.db
 
 /backend/file*
 /backend/database/*.json
+
+/AI/sa_speech.json
