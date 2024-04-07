@@ -24,7 +24,6 @@ Thumbs.db
 .cache/
 
 /backend/file*
-/backend/database/*.json
 /backend/sa_speech.json
 
 

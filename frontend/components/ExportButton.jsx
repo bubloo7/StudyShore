@@ -17,16 +17,15 @@ const ExportButton = ({ data, selected }) => {
                 const url = window.URL.createObjectURL(blob);
                 const a = document.createElement("a");
                 a.href = url;
-                a.download = "example.docx"; // Change to the filename you expect from Flask
+                a.download = "StudyShore.docx"; // Change to the filename you expect from Flask
                 document.body.appendChild(a);
                 a.click();
                 window.URL.revokeObjectURL(url);
             }}
             className="button-default"
-            style={{marginTop: "20px", marginBottom: "20px"}}
+            style={{ marginTop: "20px", marginBottom: "20px" }}
         >
             Export {selected == 0 ? "Summary" : selected == 1 ? "Flashcards" : "Quiz"}
-
         </Button>
     );
 };
