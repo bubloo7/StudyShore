@@ -74,7 +74,7 @@ const Home = () => {
                             Upload File
                         </label>
                         <Input
-                            id="picture"
+                            id="file-upload"
                             type="file"
                             onChange={async (event) => {
                                 const file = event.target.files[0];
