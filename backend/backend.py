@@ -79,10 +79,13 @@ Sodales neque sodales ut etiam sit amet nisl. Fames ac turpis egestas maecenas p
     
     id = generate_id()
     
+    letters = string.ascii_letters + string.digits
+    title = 'Title ' + ''.join(random.choice(letters) for _ in range(8))
     db_json = {
         "summary": summary,
         "flash_cards": flash_cards,
         "quiz" : quiz, 
+        "title": title, 
     }
 
     with open(os.getcwd() + "/database/" + id + ".json", "w") as f:
@@ -191,6 +194,27 @@ def fetch_id():
         return data
     except:
         return {"summary": 404}
+
+
+@app.route('/recent', methods=['GET'])
+def recent():
+    print("entering recent")
+
+    output = {"recent": []}
+    i = 0
+    for file in os.listdir(os.getcwd() + "/database"):
+        if i == 10:
+            break
+        if file.endswith(".json"):
+            with open(os.getcwd() + "/database/" + file, "r") as f:
+                data = json.load(f)
+                id = file.split(".json")[0] 
+                title = data["title"]
+                output["recent"].append({"id": id, "title": title})
+
+        i += 1
+    print("leaving recent")
+    return output
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
