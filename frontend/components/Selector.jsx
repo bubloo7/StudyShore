@@ -1,39 +1,96 @@
-export default function Selector(props) {
+import { Row, Col, Button } from "antd";
+
+const Selector = (props) => {
     return (
-        <div>
-            <button
-                onClick={() => {
-                    props.setSelected(0);
-                }}
-                style={{
-                    color: props.selected == 0 ? "green" : "red",
-                    fontSize: 32,
-                }}
-            >
-                Summary
-            </button>
-            <button
-                onClick={() => {
-                    props.setSelected(1);
-                }}
-                style={{
-                    color: props.selected == 1 ? "green" : "red",
-                    fontSize: 32,
-                }}
-            >
-                Flash Cards
-            </button>
-            <button
-                onClick={() => {
-                    props.setSelected(2);
-                }}
-                style={{
-                    color: props.selected == 2 ? "green" : "red",
-                    fontSize: 32,
-                }}
-            >
-                Quiz
-            </button>
-        </div>
+        <Col span={22}>
+            <Row justify="space-around" align="middle" gap={4}>
+                <Col span={8}>
+                    <Button
+                        onClick={() => {
+                            props.setSelected(0);
+                        }}
+                        className={
+                            props.selected == 0
+                                ? "selected-button"
+                                : "unselected-button"
+                        }
+                        style={{
+                            fontSize: 28,
+                        }}
+                        type="null"
+                    >
+                        <span
+                            style={{
+                                color:
+                                    props.selected == 0
+                                        ? "var(--main-white)"
+                                        : "var(--main-blue)",
+                            }}
+                        >
+                            S
+                        </span>
+                        ummary.
+                    </Button>
+                </Col>
+                <Col span={8}>
+                    <Button
+                        onClick={() => {
+                            props.setSelected(1);
+                        }}
+                        className={
+                            props.selected == 1
+                                ? "selected-button"
+                                : "unselected-button"
+                        }
+                        style={{
+                            fontSize: 28,
+                        }}
+                        type="null"
+                    >
+                        <span
+                            style={{
+                                color:
+                                    props.selected == 1
+                                        ? "var(--main-white)"
+                                        : "var(--main-blue)",
+                            }}
+                        >
+                            F
+                        </span>
+                        lashcards.
+                    </Button>
+                </Col>
+                <Col span={8}>
+                    <Button
+                        onClick={() => {
+                            props.setSelected(2);
+                        }}
+                        className={
+                            props.selected == 2
+                                ? "selected-button"
+                                : "unselected-button"
+                        }
+                        style={{
+                            fontSize: 28,
+                        }}
+                        type="null"
+                    >
+                        <span
+                            style={{
+                                color:
+                                    props.selected == 2
+                                        ? "var(--main-white)"
+                                        : "var(--main-blue)",
+                            }}
+                        >
+                            Q
+                        </span>
+                        uiz.
+                    </Button>
+                </Col>
+            </Row>
+        </Col>
     );
-}
+};
+
+export default Selector;

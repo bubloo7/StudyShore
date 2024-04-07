@@ -1,8 +1,6 @@
 import { Col, Row, Space, Flex } from "antd";
-import Image from "next/image";
 import { FolderUp, BookCopy, BookOpenCheck } from "lucide-react";
-import BlueBlur from "@/public/images/blue-blur.svg";
-import PurpleBlur from "@/public/images/purp-blur.svg";
+
 import CustomTypewriter from "@/components/CustomTypewriter";
 import UploadButton from "@/components/UploadButton";
 
@@ -23,8 +21,6 @@ const Home = () => {
                     marginBottom: "120px",
                 }}
             >
-                <div className="circular-blue"></div>
-                <div className="circular-purple"></div>
 
                 <Col
                     xs={24}
@@ -97,7 +93,7 @@ const Home = () => {
                         >
                             <BookCopy size={30} color="#3b82f6" />
                             <h3 style={{ marginTop: "10px" }}>
-                                Get Customized Study Tools
+                                Customized Study Tools
                             </h3>
                             <p
                                 style={{
@@ -119,7 +115,7 @@ const Home = () => {
                         >
                             <BookOpenCheck size={30} color="#3b82f6" />
                             <h3 style={{ marginTop: "10px" }}>
-                                Export and Study
+                                Export and Learn
                             </h3>
                             <p
                                 style={{

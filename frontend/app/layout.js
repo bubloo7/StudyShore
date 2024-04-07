@@ -3,11 +3,15 @@ import "./globals.css";
 import dynamic from "next/dynamic";
 
 const Header = dynamic(() => import("@/components/Header"), {
-  ssr: false,
+    ssr: false,
 });
 
 const Footer = dynamic(() => import("@/components/Footer"), {
-  ssr: false,
+    ssr: false,
+});
+
+const Blurs = dynamic(() => import("@/components/Blurs"), {
+    ssr: false,
 });
 
 const inter = Inter({ subsets: ["latin"] });
@@ -22,9 +26,8 @@ export default function RootLayout({ children }) {
         <html lang="en">
             <body className={inter.className}>
                 <Header />
-                <div>
-                    {children}
-                </div>
+                <Blurs />
+                <div>{children}</div>
                 <Footer />
             </body>
         </html>

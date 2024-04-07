@@ -6,6 +6,7 @@ import Selector from "../../components/Selector";
 import Summary from "../../components/Summary";
 import FlashCards from "../../components/FlashCards";
 import Quiz from "../../components/Quiz";
+import { Row, Col } from "antd";
 
 const api_server = "http://localhost:5000/";
 
@@ -32,22 +33,71 @@ export default function Page() {
                 console.log("RESPONSE:", response);
             });
     }, [id]);
+
     if (loading) {
         return <Loading />;
     } else {
         return (
-            <div>
-                <div style={{ margin: "100px" }}>
-                    <Selector selected={selected} setSelected={setSelected} />
-                </div>
-                {selected == 0 ? (
-                    <Summary data={data["summary"]} />
-                ) : selected == 1 ? (
-                    <FlashCards data={data["flash_cards"]} />
-                ) : (
-                    <Quiz data={data["quiz"]} />
-                )}
-            </div>
+            <>
+                <Row
+                    justify="center"
+                    align="middle"
+                    style={{
+                        marginTop: "184px",
+                        marginBottom: "120px",
+                    }}
+                >
+                    <Col
+                        xs={24}
+                        sm={24}
+                        md={24}
+                        lg={24}
+                        xl={24}
+                        xxl={24}
+                        justify="center"
+                        align="middle"
+                    >
+                        <h1
+                            style={{
+                                fontSize: "48px",
+                                color: "var(--main-blue)",
+                            }}
+                        >
+                            Study{" "}
+                            <span style={{ color: "var(--main-dark)" }}>
+                                Material
+                            </span>
+                        </h1>
+                        <h3 style={{ marginTop: "20px" }}>{data.title}</h3>
+
+                        <Row
+                            justify="center"
+                            align="middle"
+                            style={{ marginTop: "60px" }}
+                        >
+                            <Selector
+                                selected={selected}
+                                setSelected={setSelected}
+                            />
+                        </Row>
+                    </Col>
+                </Row>
+            </>
         );
     }
 }
+
+/*
+<div>
+    <div style={{ margin: "100px" }}>
+        <Selector selected={selected} setSelected={setSelected} />
+    </div>
+    {selected == 0 ? (
+        <Summary data={data["summary"]} />
+    ) : selected == 1 ? (
+        <FlashCards data={data["flash_cards"]} />
+    ) : (
+        <Quiz data={data["quiz"]} />
+    )}
+</div>;
+*/

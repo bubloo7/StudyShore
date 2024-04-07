@@ -32,7 +32,7 @@ const Header = () => {
                 </Col>
                 <Col flex={1}>
                     <Row justify="space-around" align="middle">
-                        <Link href="/" passHref>
+                        <Link href="/recent" passHref>
                             <p
                                 style={{
                                     color: "var(--main-blue)",
