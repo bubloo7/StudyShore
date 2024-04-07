@@ -258,23 +258,24 @@ def recent():
     return output
 
 
-@app.route("/export", methods=["GET"])
+@app.route("/export", methods=["POST"])
 def export():
     selected = request.json.get("selected")
     data = request.json.get("data")
     if selected == 0:
+        data = data["summary"]
         export_summary(data, "Summary.docx")
         return send_file("Summary.docx", as_attachment=True)
     elif selected == 1:
+        data = data["flash_cards"]
         export_flashcards(data, "Flashcards.docx")
         return send_file("Flashcards.docx", as_attachment=True)
 
     else:
+        data = data["quiz"]
+
         export_quiz(data, "Quiz.docx")
         return send_file("Quiz.docx", as_attachment=True)
-
-    
-
 
 
 if __name__ == "__main__":

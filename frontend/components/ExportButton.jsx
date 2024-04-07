@@ -1,9 +1,31 @@
 import { Button } from "antd";
 
-const ExportButton = ({data, selected}) => {
-    return <Button onClick={() => {
-        console.log("Gay")
-    }}>Export</Button>;
+const api_server = "http://localhost:5000/";
+const ExportButton = ({ data, selected }) => {
+    return (
+        <Button
+            onClick={async () => {
+                const response = await fetch(api_server + "/export", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ data, selected }),
+                });
+
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = "example.docx"; // Change to the filename you expect from Flask
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            }}
+        >
+            Export
+        </Button>
+    );
 };
 
 export default ExportButton;
