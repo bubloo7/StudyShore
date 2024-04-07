@@ -23,6 +23,7 @@ const Home = () => {
             >
                 <Image
                     src={Blur}
+                    alt="blurry background image"
                     style={{
                         position: "absolute",
                         top: 0,
@@ -70,7 +71,7 @@ const Home = () => {
                         style={{ marginTop: "20px" }}
                         type="null"
                     >
-                        <label for="file-upload" class="custom-file-upload">
+                        <label htmlFor="file-upload" className="custom-file-upload">
                             Upload File
                         </label>
                         <Input

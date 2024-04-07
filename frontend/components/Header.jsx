@@ -46,7 +46,7 @@ const Header = () => {
                             legacyBehavior
                         >
                             <Button type="null" className="button-default">
-                                Upload
+                                Upload File
                             </Button>
                         </Link>
                     </Row>
