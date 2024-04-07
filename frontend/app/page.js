@@ -1,9 +1,9 @@
-"use client";
-import { Col, Row, Space, Divider, Button, Flex, Input } from "antd";
+import { Col, Row, Space, Flex } from "antd";
 import Image from "next/image";
 import { FolderUp, BookCopy, BookOpenCheck } from "lucide-react";
 import Blur from "@/public/images/blur-2.svg";
 import CustomTypewriter from "@/components/CustomTypewriter";
+import UploadButton from "@/components/UploadButton";
 
 const api_server = "http://localhost:5000/";
 
@@ -63,38 +63,10 @@ const Home = () => {
                         <CustomTypewriter />
                     </h3>
 
-                    <h3 style={{ marginTop: "100px" }}>
+                    <h3 style={{ marginTop: "100px", marginBottom: "20px" }}>
                         Upload MP4, PDF, or Hand-Written to Get Started
                     </h3>
-                    <Button
-                        className="button-default"
-                        style={{ marginTop: "20px" }}
-                        type="null"
-                    >
-                        <label htmlFor="file-upload" className="custom-file-upload">
-                            Upload File
-                        </label>
-                        <Input
-                            id="file-upload"
-                            type="file"
-                            onChange={async (event) => {
-                                const file = event.target.files[0];
-                                console.log("uploaded", file);
-                                const formData = new FormData();
-                                formData.append("file", file);
-                                const response = await fetch(
-                                    "http://localhost:5000/upload",
-                                    {
-                                        method: "POST",
-                                        body: formData,
-                                    }
-                                );
-                                const response_json = await response.json();
-                                console.log("response:", response_json.data);
-                                window.location.href = "/" + response_json.id;
-                            }}
-                        />
-                    </Button>
+                    <UploadButton />
 
                     <h2 style={{ marginTop: "120px" }}>Instructions</h2>
                     <Flex

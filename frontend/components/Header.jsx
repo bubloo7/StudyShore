@@ -1,5 +1,6 @@
 import { Row, Col, Button } from "antd";
 import Link from "next/link";
+import UploadButton from "./UploadButton";
 
 const Header = () => {
     return (
@@ -40,15 +41,7 @@ const Header = () => {
                                 Recent
                             </p>
                         </Link>
-                        <Link
-                            href="https://discord.gg/cAKsV7UDGs"
-                            passHref
-                            legacyBehavior
-                        >
-                            <Button type="null" className="button-default">
-                                Upload File
-                            </Button>
-                        </Link>
+                        <UploadButton />
                     </Row>
                 </Col>
             </Row>
