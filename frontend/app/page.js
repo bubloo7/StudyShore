@@ -1,14 +1,14 @@
 import { Col, Row, Space, Flex } from "antd";
 import Image from "next/image";
 import { FolderUp, BookCopy, BookOpenCheck } from "lucide-react";
-import Blur from "@/public/images/blur-2.svg";
+import BlueBlur from "@/public/images/blue-blur.svg";
+import PurpleBlur from "@/public/images/purp-blur.svg";
 import CustomTypewriter from "@/components/CustomTypewriter";
 import UploadButton from "@/components/UploadButton";
 
 const api_server = "http://localhost:5000/";
 
 const Home = () => {
-
     async function onUploadButtonClick() {
         fetch(api_server + "/upload");
     }
@@ -18,22 +18,14 @@ const Home = () => {
             <Row
                 justify="center"
                 align="middle"
-                style={{ marginTop: "84px", marginBottom: "120px" }}
-                className="background-image"
+                style={{
+                    marginTop: "84px",
+                    marginBottom: "120px",
+                }}
             >
-                <Image
-                    src={Blur}
-                    alt="blurry background image"
-                    style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        zIndex: -1,
-                    }}
-                />
+                <div className="circular-blue"></div>
+                <div className="circular-purple"></div>
+
                 <Col
                     xs={24}
                     sm={20}
@@ -145,7 +137,6 @@ const Home = () => {
             </Row>
         </>
     );
-}
-
+};
 
 export default Home;

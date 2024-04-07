@@ -26,7 +26,7 @@ const Header = () => {
                         style={{ marginLeft: "100px" }}
                     >
                         <Link href="/" passHref>
-                            <h3 style={{ fontSize: "28px" }}>StudyShore.</h3>
+                            <h3 style={{ fontSize: "28px", zIndex: "100" }}>StudyShore.</h3>
                         </Link>
                     </Row>
                 </Col>
