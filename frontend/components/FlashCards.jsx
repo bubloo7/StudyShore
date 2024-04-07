@@ -53,13 +53,18 @@ export default function FlashCards(props) {
                         disabled={currentCard == 0}
                         style={{
                             borderRadius: "50%",
-                            backgroundColor: currentCard == 0 ? "#EBEBE4" : "var(--main-white)",
-                            color: currentCard == 0 ? "black" : "var(--main-blue)",
+                            backgroundColor:
+                                currentCard == 0
+                                    ? "#EBEBE4"
+                                    : "var(--main-white)",
+                            color:
+                                currentCard == 0 ? "black" : "var(--main-blue)",
                             height: "50px",
                             width: "50px",
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
+                            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
                         }}
                     >
                         <ChevronLeft size={140} strokeWidth={3} />
@@ -80,7 +85,11 @@ export default function FlashCards(props) {
                         {currentCard + 1} / {props.data.length}
                     </h3>
 
-                    <Tooltip title="Up Arrow" color={"var(--main-blue)"} style={{ zIndex: "1" }}>
+                    <Tooltip
+                        title="Up Arrow"
+                        color={"var(--main-blue)"}
+                        style={{ zIndex: "1" }}
+                    >
                         <Card
                             bordered={false}
                             style={{
@@ -90,15 +99,21 @@ export default function FlashCards(props) {
                                 display: "flex",
                                 justifyContent: "center",
                                 alignItems: "center",
-                                transition: "all 0.5s ease",
-                                transform: side ? "rotateX(180deg)" : "rotateX(0deg)",
+                                transition:
+                                    "transform 0.5s ease, box-shadow 0.5s ease",
+                                transform: side
+                                    ? "rotateY(180deg)"
+                                    : "rotateY(0deg)",
+                                boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.4)",
                             }}
                             onClick={() => setSide((prev) => prev ^ 1)}
                         >
                             <h2
                                 style={{
                                     color: "var(--main-blue)",
-                                    transform: side ? "rotateX(180deg)" : "rotateX(0deg)",
+                                    transform: side
+                                        ? "rotateY(180deg)"
+                                        : "rotateY(0deg)",
                                 }}
                             >
                                 {props.data[currentCard][side]}
@@ -116,13 +131,20 @@ export default function FlashCards(props) {
                         disabled={currentCard == props.data.length - 1}
                         style={{
                             borderRadius: "50%",
-                            backgroundColor: currentCard == props.data.length - 1 ? "#EBEBE4" : "var(--main-white)",
-                            color: currentCard == props.data.length - 1 ? "black" : "var(--main-blue)",
+                            backgroundColor:
+                                currentCard == props.data.length - 1
+                                    ? "#EBEBE4"
+                                    : "var(--main-white)",
+                            color:
+                                currentCard == props.data.length - 1
+                                    ? "black"
+                                    : "var(--main-blue)",
                             height: "50px",
                             width: "50px",
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
+                            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
                         }}
                     >
                         <ChevronRight strokeWidth={3} />

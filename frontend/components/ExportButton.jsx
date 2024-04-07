@@ -22,8 +22,11 @@ const ExportButton = ({ data, selected }) => {
                 a.click();
                 window.URL.revokeObjectURL(url);
             }}
+            className="button-default"
+            style={{marginTop: "20px"}}
         >
-            Export
+            Export {selected == 0 ? "Summary" : selected == 1 ? "Flashcards" : "Quiz"}
+
         </Button>
     );
 };

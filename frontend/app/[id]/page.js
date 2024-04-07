@@ -46,20 +46,13 @@ export default function Page() {
                     justify="center"
                     align="middle"
                     style={{
-                        marginTop: "184px",
+                        marginTop: "144px",
                         marginBottom: "120px",
                     }}
                 >
                     <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24} justify="center" align="middle">
-                        <h1
-                            style={{
-                                fontSize: "48px",
-                                color: "var(--main-blue)",
-                            }}
-                        >
-                            Study <span style={{ color: "var(--main-dark)" }}>Material</span>
-                        </h1>
-                        <h3 style={{ marginTop: "20px" }}>{data.title}</h3>
+                        
+                        <h2>{data.title}</h2>
 
                         <ExportButton data={data} selected={selected} />
 
