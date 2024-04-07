@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, send_file
 from flask_cors import CORS
 import os
 from docx import Document
@@ -8,10 +8,14 @@ import random
 import string
 import json
 
+from quiz_generator import export_quiz
+from flash_card_generator import export_flashcards
+from summary_generator import export_summary
 
 
 app = Flask(__name__)
 CORS(app)
+
 
 def generate_quiz(flashcards):
     quiz = []
@@ -45,27 +49,56 @@ def generate_id():
             ids.add(file)
 
     letters = string.ascii_letters + string.digits
-    id = ''.join(random.choice(letters) for _ in range(5))
+    id = "".join(random.choice(letters) for _ in range(5))
     while id in ids:
-        id = ''.join(random.choice(letters) for _ in range(5))
+        id = "".join(random.choice(letters) for _ in range(5))
     return id
-
 
 
 def example_response():
     flash_cards = [
-            ["Photosynthesis", "The process by which green plants and some other organisms use sunlight to synthesize foods with the help of chlorophyll."],
-            ["Mitochondria", "Organelles that generate most of the chemical energy needed to power the biochemical reactions of cells."],
-            ["Newton's Laws", "Three fundamental principles of classical mechanics proposed by Sir Isaac Newton."],
-            ["H2O", "Chemical formula for water, composed of two hydrogen atoms bonded to one oxygen atom."],
-            ["Civil Rights Movement", "A struggle for social justice that took place mainly during the 1950s and 1960s for African Americans to gain equal rights under the law in the United States."],
-            ["Palindrome", "A word, phrase, number, or other sequence of characters that reads the same forward and backward."],
-            ["The Great Depression", "A severe worldwide economic depression that took place mostly during the 1930s."],
-            ["E=mc^2", "Albert Einstein's famous equation, which expresses the relationship between energy (E), mass (m), and the speed of light (c) squared."],
-            ["Renaissance", "A period in European history marking the transition from the Middle Ages to modernity and covering the 14th to 17th centuries."],
-            ["Cell Division", "The process by which a parent cell divides into two or more daughter cells."],
-          ]
-    summary =  """Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pharetra vel turpis nunc eget lorem dolor sed. Diam vulputate ut pharetra sit amet. Amet dictum sit amet justo. Nibh praesent tristique magna sit amet purus gravida quis. Nunc id cursus metus aliquam eleifend mi in nulla posuere. Sollicitudin aliquam ultrices sagittis orci. Egestas erat imperdiet sed euismod nisi porta lorem mollis. In fermentum posuere urna nec tincidunt praesent semper feugiat nibh. Vel pharetra vel turpis nunc eget lorem. Suspendisse sed nisi lacus sed viverra tellus in hac habitasse. Adipiscing enim eu turpis egestas. Facilisis gravida neque convallis a cras semper. Quam quisque id diam vel quam elementum pulvinar etiam.
+        [
+            "Photosynthesis",
+            "The process by which green plants and some other organisms use sunlight to synthesize foods with the help of chlorophyll.",
+        ],
+        [
+            "Mitochondria",
+            "Organelles that generate most of the chemical energy needed to power the biochemical reactions of cells.",
+        ],
+        [
+            "Newton's Laws",
+            "Three fundamental principles of classical mechanics proposed by Sir Isaac Newton.",
+        ],
+        [
+            "H2O",
+            "Chemical formula for water, composed of two hydrogen atoms bonded to one oxygen atom.",
+        ],
+        [
+            "Civil Rights Movement",
+            "A struggle for social justice that took place mainly during the 1950s and 1960s for African Americans to gain equal rights under the law in the United States.",
+        ],
+        [
+            "Palindrome",
+            "A word, phrase, number, or other sequence of characters that reads the same forward and backward.",
+        ],
+        [
+            "The Great Depression",
+            "A severe worldwide economic depression that took place mostly during the 1930s.",
+        ],
+        [
+            "E=mc^2",
+            "Albert Einstein's famous equation, which expresses the relationship between energy (E), mass (m), and the speed of light (c) squared.",
+        ],
+        [
+            "Renaissance",
+            "A period in European history marking the transition from the Middle Ages to modernity and covering the 14th to 17th centuries.",
+        ],
+        [
+            "Cell Division",
+            "The process by which a parent cell divides into two or more daughter cells.",
+        ],
+    ]
+    summary = """Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pharetra vel turpis nunc eget lorem dolor sed. Diam vulputate ut pharetra sit amet. Amet dictum sit amet justo. Nibh praesent tristique magna sit amet purus gravida quis. Nunc id cursus metus aliquam eleifend mi in nulla posuere. Sollicitudin aliquam ultrices sagittis orci. Egestas erat imperdiet sed euismod nisi porta lorem mollis. In fermentum posuere urna nec tincidunt praesent semper feugiat nibh. Vel pharetra vel turpis nunc eget lorem. Suspendisse sed nisi lacus sed viverra tellus in hac habitasse. Adipiscing enim eu turpis egestas. Facilisis gravida neque convallis a cras semper. Quam quisque id diam vel quam elementum pulvinar etiam.
 
 Varius duis at consectetur lorem donec. Mi bibendum neque egestas congue quisque egestas diam in. Id cursus metus aliquam eleifend mi. Lacus laoreet non curabitur gravida arcu ac tortor dignissim convallis. Risus commodo viverra maecenas accumsan lacus vel facilisis volutpat est. Massa id neque aliquam vestibulum morbi blandit cursus. Commodo nulla facilisi nullam vehicula. Nec ullamcorper sit amet risus nullam eget. Pretium lectus quam id leo in vitae turpis massa sed. Elementum curabitur vitae nunc sed velit dignissim.
 
@@ -74,118 +107,126 @@ Posuere sollicitudin aliquam ultrices sagittis orci a scelerisque purus semper. 
 Aliquam nulla facilisi cras fermentum. Nunc mattis enim ut tellus elementum. Tortor dignissim convallis aenean et tortor. Augue eget arcu dictum varius duis at consectetur lorem donec. Nunc id cursus metus aliquam eleifend mi in nulla posuere. Pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id. Risus quis varius quam quisque. Commodo elit at imperdiet dui accumsan sit amet. Nunc sed augue lacus viverra. Commodo nulla facilisi nullam vehicula ipsum a arcu. Quis enim lobortis scelerisque fermentum dui faucibus in ornare.
 
 Sodales neque sodales ut etiam sit amet nisl. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo. Sagittis id consectetur purus ut faucibus pulvinar. Et pharetra pharetra massa massa. Posuere sollicitudin aliquam ultrices sagittis orci. Nisl nisi scelerisque eu ultrices vitae auctor eu augue. Ut tellus elementum sagittis vitae et leo duis ut diam. Convallis posuere morbi leo urna molestie at. Urna et pharetra pharetra massa. Neque sodales ut etiam sit. Risus viverra adipiscing at in. Dui sapien eget mi proin sed libero enim sed. Purus sit amet volutpat consequat mauris nunc. Nunc non blandit massa enim nec dui nunc."""
-    
+
     quiz = generate_quiz(flash_cards)
-    
+
     id = generate_id()
-    
+
     letters = string.ascii_letters + string.digits
-    title = 'Title ' + ''.join(random.choice(letters) for _ in range(8))
+    title = "Title " + "".join(random.choice(letters) for _ in range(8))
     db_json = {
         "summary": summary,
         "flash_cards": flash_cards,
-        "quiz" : quiz, 
-        "title": title, 
+        "quiz": quiz,
+        "title": title,
     }
 
     with open(os.getcwd() + "/database/" + id + ".json", "w") as f:
         json.dump(db_json, f)
 
-    return {
-        "id":  id
-    }
+    return {"id": id}
+
 
 def handle_png(png):
     pass
 
+
 def handle_jpeg(jpeg):
     pass
 
+
 def handle_pdf(pdf):
-    reader = PdfReader(os.getcwd() + '/file.pdf')
+    reader = PdfReader(os.getcwd() + "/file.pdf")
     number_of_pages = len(reader.pages)
-    s = ''
+    s = ""
     for i in range(number_of_pages):
         page = reader.pages[i]
         text = page.extract_text()
         s += text
-    
-    print(s) # pass in s to gemini
+
+    print(s)  # pass in s to gemini
+
 
 def handle_txt(txt):
-    s = open('file.txt').read()
-    print(s) # pass in s to gemini
+    s = open("file.txt").read()
+    print(s)  # pass in s to gemini
     pass
 
+
 def handle_docx(docx):
-    d = Document(os.getcwd() + '/file.docx')
-    s = ''
+    d = Document(os.getcwd() + "/file.docx")
+    s = ""
     for paragraph in d.iter_inner_content():
         for line in paragraph.iter_inner_content():
             s += line.text
-        s += '\n'
-    
-    print(s) # pass in s to gemini
+        s += "\n"
+
+    print(s)  # pass in s to gemini
+
 
 def handle_mp3(mp3):
     pass
 
+
 def handle_mp4(mp4):
     pass
 
+
 def handle_pptx(pptx):
-    p = Presentation('file.pptx')
-    s = ''
+    p = Presentation("file.pptx")
+    s = ""
     # sorry about the try/except stuff. its annoying bc certain things dont have texts/shapes and make it crash
     for slide in p.slides:
-        try: 
+        try:
             for shape in slide.shapes:
                 try:
                     s += shape.text
                 except Exception:
                     pass
-            s += '\n'
+            s += "\n"
         except Exception:
             pass
-    
-    print(s) # pass in s to gemini
 
-@app.route('/')
+    print(s)  # pass in s to gemini
+
+
+@app.route("/")
 def hello_world():
-    return 'Hello, World!'
+    return "Hello, World!"
 
 
-@app.route('/upload', methods=['POST'])
+@app.route("/upload", methods=["POST"])
 def upload():
-    file = request.files['file']
+    file = request.files["file"]
     name = file.filename
-    extension = name.split('.')[-1]
-    file.save(dst = os.getcwd() + '/file.' + extension)
+    extension = name.split(".")[-1]
+    file.save(dst=os.getcwd() + "/file." + extension)
 
     print(extension, name)
-    if extension == 'png':
+    if extension == "png":
         handle_png(file)
-    elif extension == 'jpg':
+    elif extension == "jpg":
         handle_jpeg(file)
-    elif extension == 'pdf':
+    elif extension == "pdf":
         handle_pdf(file)
-    elif extension == 'txt':
+    elif extension == "txt":
         handle_txt(file)
-    elif extension == 'docx':
+    elif extension == "docx":
         handle_docx(file)
-    elif extension == 'mp3':
+    elif extension == "mp3":
         handle_mp4(file)
-    elif extension == 'mp4':
+    elif extension == "mp4":
         handle_mp3(file)
-    elif extension == 'pptx':
+    elif extension == "pptx":
         handle_pptx(file)
 
     response = example_response()
     return response
 
-@app.route('/fetch_id', methods=['POST'])
+
+@app.route("/fetch_id", methods=["POST"])
 def fetch_id():
-    id = request.json.get('id')
+    id = request.json.get("id")
     try:
         with open(os.getcwd() + "/database/" + id + ".json", "r") as f:
             data = json.load(f)
@@ -196,7 +237,7 @@ def fetch_id():
         return {"summary": 404}
 
 
-@app.route('/recent', methods=['GET'])
+@app.route("/recent", methods=["GET"])
 def recent():
     print("entering recent")
 
@@ -208,7 +249,7 @@ def recent():
         if file.endswith(".json"):
             with open(os.getcwd() + "/database/" + file, "r") as f:
                 data = json.load(f)
-                id = file.split(".json")[0] 
+                id = file.split(".json")[0]
                 title = data["title"]
                 output["recent"].append({"id": id, "title": title})
 
@@ -216,5 +257,26 @@ def recent():
     print("leaving recent")
     return output
 
-if __name__ == '__main__':
+
+@app.route("/export", methods=["POST"])
+def export():
+    selected = request.json.get("selected")
+    data = request.json.get("data")
+    if selected == 0:
+        data = data["summary"]
+        export_summary(data, "Summary.docx")
+        return send_file("Summary.docx", as_attachment=True)
+    elif selected == 1:
+        data = data["flash_cards"]
+        export_flashcards(data, "Flashcards.docx")
+        return send_file("Flashcards.docx", as_attachment=True)
+
+    else:
+        data = data["quiz"]
+
+        export_quiz(data, "Quiz.docx")
+        return send_file("Quiz.docx", as_attachment=True)
+
+
+if __name__ == "__main__":
     app.run(debug=True, port=5000)

@@ -30,3 +30,5 @@ Thumbs.db
 /AI/*.mp3
 /AI/*.mp4
 
+/*/__pycache__
+
