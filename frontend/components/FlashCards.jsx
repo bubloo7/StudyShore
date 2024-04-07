@@ -53,8 +53,8 @@ export default function FlashCards(props) {
                         disabled={currentCard == 0}
                         style={{
                             borderRadius: "50%",
-                            backgroundColor: "var(--main-white)",
-                            color: "var(--main-blue)",
+                            backgroundColor: currentCard == 0 ? "#EBEBE4" : "var(--main-white)",
+                            color: currentCard == 0 ? "black" : "var(--main-blue)",
                             height: "50px",
                             width: "50px",
                             display: "flex",
@@ -80,11 +80,7 @@ export default function FlashCards(props) {
                         {currentCard + 1} / {props.data.length}
                     </h3>
 
-                    <Tooltip
-                        title="Up Arrow"
-                        color={"var(--main-blue)"}
-                        style={{ zIndex: "1" }}
-                    >
+                    <Tooltip title="Up Arrow" color={"var(--main-blue)"} style={{ zIndex: "1" }}>
                         <Card
                             bordered={false}
                             style={{
@@ -117,8 +113,8 @@ export default function FlashCards(props) {
                         disabled={currentCard == props.data.length - 1}
                         style={{
                             borderRadius: "50%",
-                            backgroundColor: "var(--main-white)",
-                            color: "var(--main-blue)",
+                            backgroundColor: currentCard == props.data.length - 1 ? "#EBEBE4" : "var(--main-white)",
+                            color: currentCard == props.data.length - 1 ? "black" : "var(--main-blue)",
                             height: "50px",
                             width: "50px",
                             display: "flex",
@@ -126,7 +122,7 @@ export default function FlashCards(props) {
                             alignItems: "center",
                         }}
                     >
-                        <ChevronRight  strokeWidth={3}/>
+                        <ChevronRight strokeWidth={3} />
                     </Button>
                 </Tooltip>
             </Row>
