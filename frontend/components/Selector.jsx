@@ -11,8 +11,8 @@ const Selector = (props) => {
                         }}
                         className={
                             props.selected == 0
-                                ? "selected-button"
-                                : "unselected-button"
+                                ? "selected-button "
+                                : "unselected-button "
                         }
                         style={{
                             fontSize: 28,

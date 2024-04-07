@@ -37,6 +37,7 @@ const Header = () => {
                                 style={{
                                     color: "var(--main-blue)",
                                 }}
+                                className="recent"
                             >
                                 Recent
                             </p>
